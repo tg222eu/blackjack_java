@@ -2,6 +2,9 @@ package BlackJack.model;
 
 import BlackJack.model.rules.*;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class Dealer extends Player {
 
   private Deck m_deck;
@@ -57,5 +60,21 @@ public class Dealer extends Player {
     }
     return false;
   }
-  
+
+  public void Stand(){
+    if(m_deck != null){
+      this.ShowHand();
+
+      for (Card c : this.GetHand()) {
+        c.Show(true);
+      }
+
+      while(m_hitRule.DoHit(this)){
+        Card c = m_deck.GetCard();
+        c.Show(true);
+        this.DealCard(c);
+      }
+    }
+  }
+
 }
