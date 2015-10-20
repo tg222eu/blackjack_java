@@ -10,7 +10,6 @@ public class Player {
 
   public Player()
   {
-  
     m_hand = new LinkedList<Card>();
     System.out.println("Hello List World");
   }
@@ -30,7 +29,7 @@ public class Player {
     m_hand.clear();
   }
   
-  public void ShowHand()
+  public void ShowHand() // for each card in m_hand Linked List
   {
     for(Card c : m_hand)
     {
@@ -71,4 +70,16 @@ public class Player {
 
     return score;
   }
+
+    public boolean AceOnHand () // this method check if the player has a Ace in his hand (Soft 17 Hit Strategy)
+    {
+        for(Card c : GetHand())
+        {
+            if (c.GetValue() == Card.Value.Ace)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
