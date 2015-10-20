@@ -6,7 +6,7 @@ import BlackJack.model.Player;
  * Created by Mauro José Pappaterra on 20/10/2015.
  */
 
-public class Soft17HitStrategy {
+public class Soft17HitStrategy implements IHitStrategy{
     private final int g_hitLimit = 17;
 
     public boolean DoHit(Player a_dealer) {
