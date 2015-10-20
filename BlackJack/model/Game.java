@@ -22,10 +22,7 @@ public class Game {
     return m_dealer.IsDealerWinner(m_player);
   }
   
-  public boolean NewGame()
-  {
-    return m_dealer.NewGame(m_player);
-  }
+  public boolean NewGame() { return m_dealer.NewGame(m_player); }
   
   public boolean Hit()
   {
