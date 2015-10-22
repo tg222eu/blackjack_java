@@ -21,8 +21,7 @@ public class Dealer extends Player {
       System.out.println("" + c.GetValue() + " of " + c.GetColor());
     }    */
   }
-  
-  
+
   public boolean NewGame(Player a_player) {
     if (m_deck == null || IsGameOver()) {
       m_deck = new Deck();
@@ -42,12 +41,7 @@ public class Dealer extends Player {
   }
 
   public boolean IsDealerWinner(Player a_player) {
-    if (a_player.CalcScore() > g_maxScore) {
-      return true;
-    } else if (CalcScore() > g_maxScore) {
-      return false;
-    }
-    return CalcScore() >= a_player.CalcScore();
+    return new PlayerWinsStrategy().returnWinner(this, a_player);
   }
 
   public boolean IsGameOver() {
