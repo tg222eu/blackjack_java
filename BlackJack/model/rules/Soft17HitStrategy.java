@@ -3,10 +3,6 @@ package BlackJack.model.rules;
 import BlackJack.model.Card;
 import BlackJack.model.Player;
 
-/**
- * Created by totte on 2015-10-20.
- */
-
 public class Soft17HitStrategy implements IHitStrategy {
 
     private final int g_hitLimit = 17;
@@ -27,7 +23,7 @@ public class Soft17HitStrategy implements IHitStrategy {
                 faceCounter++;
             }
         }
-        //Force hit even if score is 17 and have atleast one ace on hand and no face card
+        //Force hit even if score is 17 and have at least one ace on hand and no face card
         if (a_dealer.CalcScore() == g_hitLimit && aceCounter > 0 && faceCounter==0 ) {
             return true;
         }

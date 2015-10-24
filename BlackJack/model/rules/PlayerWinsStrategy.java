@@ -2,9 +2,6 @@ package BlackJack.model.rules;
 
 import BlackJack.model.Player;
 
-/**
- * Created by Mauro José Pappaterra on 22/10/2015.
- */
 public class PlayerWinsStrategy implements IScoreStrategy {
 
     @Override

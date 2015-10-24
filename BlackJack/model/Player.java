@@ -1,22 +1,33 @@
 package BlackJack.model;
 
+import BlackJack.controller.PlayGame;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 
-public class Player {
+public class Player implements Subject{
 
-  private List<Card> m_hand;
+  public List<Card> m_hand;
   protected final int g_maxScore = 21;
+    public static ArrayList<PlayGame> games = new ArrayList <PlayGame>(); //Array that will contain all the susbscribers to be updated
 
-  public Player()
+
+    public Player()
   {
     m_hand = new LinkedList<Card>();
     System.out.println("Hello List World");
   }
-  
-  public void DealCard(Card a_addToHand)
-  {
+
+  public void DealCard(Card a_addToHand) {
+      try {
+          Thread.sleep(2000);
+      }catch(Exception e){
+          System.out.println("Error: timer interrupted");
+          Thread.currentThread().interrupt();
+      }
     m_hand.add(a_addToHand);
+      notifyObserver();
   }
   
   public Iterable<Card> GetHand()
@@ -71,4 +82,22 @@ public class Player {
     return score;
   }
 
+
+    @Override
+    public void register(PlayGame game) {
+        games.add(game);
+    }
+
+    @Override
+    public void unregister(PlayGame game) {
+        int index = games.indexOf(game);
+        games.remove(index);
+    }
+
+    @Override
+    public void notifyObserver() {
+        for (PlayGame game: games){
+            game.update();
+        }
+    }
 }

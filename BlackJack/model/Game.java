@@ -1,6 +1,6 @@
 package BlackJack.model;
 
-public class Game {
+public class Game{
 
   private Dealer m_dealer;
   private Player m_player;
@@ -10,8 +10,7 @@ public class Game {
     m_dealer = new Dealer(new BlackJack.model.rules.RulesFactory());
     m_player = new Player();
   }
-    
-    
+
   public boolean IsGameOver()
   {
     return m_dealer.IsGameOver();
@@ -22,7 +21,9 @@ public class Game {
     return m_dealer.IsDealerWinner(m_player);
   }
   
-  public boolean NewGame() { return m_dealer.NewGame(m_player); }
+  public boolean NewGame() {
+    return m_dealer.NewGame(m_player);
+  }
   
   public boolean Hit()
   {
@@ -34,6 +35,9 @@ public class Game {
     m_dealer.Stand();
     return true;
   }
+  public Player getDealer(){
+    return m_dealer;
+  }
   
   public Iterable<Card> GetDealerHand()
   {
@@ -44,7 +48,7 @@ public class Game {
   {
     return m_player.GetHand();
   }
-  
+
   public int GetDealerScore()
   {
     return m_dealer.CalcScore();
@@ -54,5 +58,4 @@ public class Game {
   {
     return m_player.CalcScore();
   }
-
 }

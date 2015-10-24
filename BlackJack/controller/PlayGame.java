@@ -1,15 +1,22 @@
 package BlackJack.controller;
-
+import BlackJack.model.*;
 import BlackJack.view.IView;
-import BlackJack.model.Game;
 
-public class PlayGame {
+public class PlayGame implements Observer{
+
+  private Game game;
+  private IView view;
+
+  public static int welcome = 0;
 
   public boolean Play(Game a_game, IView a_view) {
-    a_view.DisplayWelcomeMessage();
-    
-    a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-    a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+    game = a_game;
+    view = a_view;
+
+    if(welcome == 0) {
+      view.DisplayWelcomeMessage();
+      welcome = -1;
+    }
 
     if (a_game.IsGameOver())
     {
@@ -32,5 +39,11 @@ public class PlayGame {
     }
 
     return input != 'q';
+  }
+  @Override
+  public void update() {
+    view.DisplayWelcomeMessage();
+    view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
+    view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
   }
 }

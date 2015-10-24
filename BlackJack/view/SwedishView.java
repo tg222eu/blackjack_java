@@ -1,12 +1,11 @@
 package BlackJack.view;
 
-public class SwedishView implements IView 
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
          
             for(int i = 0; i < 50; i++) {System.out.print("\n");};
-
             System.out.println("Hej Black Jack Världen");
             System.out.println("----------------------");
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
@@ -69,3 +68,4 @@ public class SwedishView implements IView
             System.out.println("");
         }
     }
+

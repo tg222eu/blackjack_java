@@ -8,10 +8,13 @@ public class Program
 {
   public static void main(String[] a_args)
   {
-    Game g = new Game();
-    IView v = new SimpleView(); //new SwedishView();
-    PlayGame ctrl = new PlayGame();
-    
+
+    Game g = new Game(); //MODEL
+    IView v = new SimpleView(); //new SwedishView(); //VIEW
+    PlayGame ctrl = new PlayGame(); //CONTROLLER
+
+    g.getDealer().register(ctrl); //Register observer
+
     while (ctrl.Play(g, v));
   }
 }

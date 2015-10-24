@@ -61,7 +61,7 @@ public class Dealer extends Player {
     }
   }
 
-  public void dealNewCard(Player a_player, boolean boo)
+  public void dealNewCard(Player a_player, boolean boo) // this method is our implementation
   {
     Card c = m_deck.GetCard();
     c.Show(boo);

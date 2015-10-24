@@ -1,13 +1,11 @@
 package BlackJack.view;
+public class SimpleView implements IView{
 
-public class SimpleView implements IView 
-{
-
-        public void DisplayWelcomeMessage()
+    public void DisplayWelcomeMessage()
         {
-          for(int i = 0; i < 50; i++) {System.out.print("\n");}; 
-          System.out.println("Hello Black Jack World");
-          System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
+          for(int i = 0; i < 50; i++) {System.out.print("\n");};
+            System.out.println("Hello Black Jack World");
+            System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
         public int GetInput()
@@ -46,7 +44,7 @@ public class SimpleView implements IView
             System.out.println("");
         }
 
-        public void DisplayGameOver(boolean a_dealerIsWinner)
+         public void DisplayGameOver(boolean a_dealerIsWinner)
         {
             System.out.println("GameOver: ");
             if (a_dealerIsWinner)
@@ -59,4 +57,4 @@ public class SimpleView implements IView
             }
             
         }
-    }
+}

@@ -16,7 +16,6 @@ public class Deck {
         AddCard(c);
       }
     }
-    
     Shuffle();
   }
   
