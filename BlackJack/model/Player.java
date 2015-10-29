@@ -20,12 +20,6 @@ public class Player implements Subject{
   }
 
   public void DealCard(Card a_addToHand) {
-      try {
-          Thread.sleep(2000);
-      }catch(Exception e){
-          System.out.println("Error: timer interrupted");
-          Thread.currentThread().interrupt();
-      }
     m_hand.add(a_addToHand);
       notifyObserver();
   }

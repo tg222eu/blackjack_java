@@ -23,27 +23,33 @@ public class PlayGame implements Observer{
         a_view.DisplayGameOver(a_game.IsDealerWinner());
     }
 
-    int input = a_view.GetInput();
+    IView.Event input = a_view.GetInput();
     
-    if (input == 'p')
+    if (input == IView.Event.NEW)
     {
         a_game.NewGame();
     }
-    else if (input == 'h')
+    else if (input == IView.Event.HIT)
     {
         a_game.Hit();
     }
-    else if (input == 's')
+    else if (input == IView.Event.STAND)
     {
         a_game.Stand();
     }
 
-    return input != 'q';
+    return input != IView.Event.QUIT;
   }
   @Override
   public void update() {
     view.DisplayWelcomeMessage();
     view.DisplayDealerHand(game.GetDealerHand(), game.GetDealerScore());
     view.DisplayPlayerHand(game.GetPlayerHand(), game.GetPlayerScore());
+    try {
+      Thread.sleep(2000);
+    }catch(Exception e){
+      System.out.println("Error: timer interrupted");
+      Thread.currentThread().interrupt();
+    }
   }
 }

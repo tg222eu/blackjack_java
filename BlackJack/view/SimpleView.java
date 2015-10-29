@@ -8,14 +8,24 @@ public class SimpleView implements IView{
             System.out.println("Type 'p' to Play, 'h' to Hit, 's' to Stand or 'q' to Quit\n");
         }
 
-        public int GetInput()
+        public Event GetInput()
         {
           try {
-            return System.in.read();
+              int input = System.in.read();
+              if(input == 'p'){
+                  return Event.NEW;
+              }else if(input == 'h'){
+                  return Event.HIT;
+              }else if(input == 's'){
+                  return Event.STAND;
+              }else if(input == 'q'){
+                  return Event.QUIT;
+              }
+
           } catch (java.io.IOException e) {
             System.out.println("" + e);
-            return 0;
           }
+            return null;
         }
 
         public void DisplayCard(BlackJack.model.Card a_card)

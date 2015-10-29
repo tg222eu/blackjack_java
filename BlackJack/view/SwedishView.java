@@ -11,14 +11,24 @@ public class SwedishView implements IView
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
         
-        public int GetInput()
+        public Event GetInput()
         {
-          try {
-            return System.in.read();
-          } catch (java.io.IOException e) {
-            System.out.println("" + e);
-            return 0;
-          }
+            try {
+                int input = System.in.read();
+                if(input == 'p'){
+                    return Event.NEW;
+                }else if(input == 'h'){
+                    return Event.HIT;
+                }else if(input == 's'){
+                    return Event.STAND;
+                }else if(input == 'q'){
+                    return Event.QUIT;
+                }
+
+            } catch (java.io.IOException e) {
+                System.out.println("" + e);
+            }
+            return null;
         }
         
         public void DisplayCard(BlackJack.model.Card a_card)
